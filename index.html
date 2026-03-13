@@ -1,0 +1,445 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DOC KOMBAT — Luta pelos Arquivos</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--bg:#0a0a0c;
+--card:#151520;
+--border:#26263a;
+
+--primary:#ff3b4a;
+--secondary:#ffd93b;
+--accent:#00d9ff;
+
+--text:#eaeaea;
+--muted:#8a8a8a;
+
+--pixel:'Press Start 2P', monospace;
+--display:'Orbitron', sans-serif;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+font-family:var(--display);
+line-height:1.6;
+}
+
+/* SCANLINE */
+
+body::after{
+content:"";
+position:fixed;
+inset:0;
+pointer-events:none;
+background:repeating-linear-gradient(
+0deg,
+rgba(0,0,0,0.15),
+rgba(0,0,0,0.15) 2px,
+transparent 2px,
+transparent 4px
+);
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px 20px;
+background:url("Luta.jpg") center/cover no-repeat;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.9));
+}
+
+.hero-content{
+position:relative;
+max-width:800px;
+}
+
+.hero h1{
+font-family:var(--pixel);
+font-size:clamp(2rem,6vw,4rem);
+color:var(--primary);
+text-shadow:0 0 15px var(--primary);
+margin-bottom:20px;
+}
+
+.subtitle{
+font-family:var(--pixel);
+color:var(--secondary);
+font-size:12px;
+margin-bottom:20px;
+}
+
+.desc{
+color:var(--muted);
+margin-bottom:40px;
+}
+
+/* BUTTONS */
+
+.buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn{
+font-family:var(--pixel);
+font-size:11px;
+padding:14px 28px;
+border-radius:6px;
+cursor:pointer;
+border:2px solid transparent;
+transition:0.3s;
+text-decoration:none;
+}
+
+.btn-primary{
+background:var(--primary);
+color:white;
+}
+
+.btn-primary:hover{
+transform:translateY(-3px);
+box-shadow:0 0 20px var(--primary);
+}
+
+.btn-outline{
+border-color:var(--secondary);
+color:var(--secondary);
+}
+
+.btn-outline:hover{
+background:rgba(255,217,59,0.1);
+}
+
+/* FEATURES */
+
+.features{
+padding:100px 20px;
+text-align:center;
+}
+
+.features h2{
+font-family:var(--pixel);
+color:var(--primary);
+margin-bottom:50px;
+}
+
+.features-grid{
+max-width:1100px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
+}
+
+.card{
+background:var(--card);
+border:1px solid var(--border);
+padding:30px;
+border-radius:8px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:var(--primary);
+box-shadow:0 0 20px rgba(255,59,74,.2);
+}
+
+.card-icon{
+font-size:30px;
+margin-bottom:15px;
+}
+
+.card h3{
+font-family:var(--pixel);
+font-size:12px;
+color:var(--secondary);
+margin-bottom:10px;
+}
+
+.card p{
+font-size:14px;
+color:var(--muted);
+}
+
+/* CHARACTERS */
+
+.characters{
+padding:100px 20px;
+background:#0f0f18;
+text-align:center;
+}
+
+.characters h2{
+font-family:var(--pixel);
+color:var(--primary);
+margin-bottom:40px;
+}
+
+.grid-chars{
+max-width:1000px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+}
+
+.char{
+background:var(--bg);
+border:1px solid var(--border);
+padding:20px;
+border-radius:8px;
+transition:.3s;
+cursor:pointer;
+}
+
+.char:hover{
+border-color:var(--accent);
+box-shadow:0 0 15px rgba(0,217,255,.4);
+}
+
+.avatar{
+width:70px;
+height:70px;
+background:#1e1e2e;
+margin:auto;
+margin-bottom:12px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:var(--pixel);
+color:var(--primary);
+font-size:20px;
+}
+
+.char h3{
+font-family:var(--pixel);
+font-size:11px;
+}
+
+.char p{
+font-size:12px;
+color:var(--muted);
+}
+
+/* CTA */
+
+.cta{
+padding:100px 20px;
+text-align:center;
+}
+
+.cta h2{
+font-family:var(--pixel);
+color:var(--primary);
+margin-bottom:20px;
+}
+
+.cta p{
+color:var(--muted);
+margin-bottom:30px;
+}
+
+/* FOOTER */
+
+footer{
+border-top:1px solid var(--border);
+text-align:center;
+padding:20px;
+color:var(--muted);
+font-size:14px;
+}
+
+/* MODAL TRAILER */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.8);
+display:flex;
+align-items:center;
+justify-content:center;
+visibility:hidden;
+opacity:0;
+transition:.3s;
+}
+
+.modal.active{
+visibility:visible;
+opacity:1;
+}
+
+.modal iframe{
+width:90%;
+max-width:800px;
+height:450px;
+border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>DOC KOMBAT</h1>
+
+<p class="subtitle">LUTA PELOS ARQUIVOS</p>
+
+<p class="desc">
+Entre no ringue digital e lute pela preservação dos arquivos.
+Um jogo de luta retrô com pixel art e combates intensos.
+</p>
+
+<div class="buttons">
+
+<a href="https://www.mediafire.com/file/6kwvh01q0vjh2tl/Setup_Kombatdoc.exe/file" target="_blank" class="btn btn-primary">
+🎮 JOGAR AGORA
+</a>
+
+<button class="btn btn-outline" onclick="openTrailer()">
+▶ VER TRAILER
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="features">
+
+<h2>CARACTERÍSTICAS</h2>
+
+<div class="features-grid">
+
+<div class="card">
+<div class="card-icon">⚔️</div>
+<h3>COMBATE</h3>
+<p>Sistema de luta com combos, especiais e finalizações.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">👥</div>
+<h3>PVP LOCAL</h3>
+<p>Batalhe contra amigos no modo multiplayer.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">🏆</div>
+<h3>ARCADE</h3>
+<p>Derrote todos os lutadores e vire campeão.</p>
+</div>
+
+<div class="card">
+<div class="card-icon">⚡</div>
+<h3>PIXEL ART</h3>
+<p>Estilo retrô com animações fluidas.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="characters">
+
+<h2>LUTADORES</h2>
+
+<div class="grid-chars">
+
+<div class="char">
+<div class="avatar">?</div>
+<h3>SCANNER</h3>
+<p>Técnico</p>
+</div>
+
+<div class="char">
+<div class="avatar">?</div>
+<h3>ARQUIVO</h3>
+<p>Veloz</p>
+</div>
+
+<div class="char">
+<div class="avatar">?</div>
+<h3>DOC MASTER</h3>
+<p>Equilibrado</p>
+</div>
+
+<div class="char">
+<div class="avatar">?</div>
+<h3>PIXEL</h3>
+<p>Pesado</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="cta">
+
+<h2>PRONTO PARA LUTAR?</h2>
+
+<p>Baixe agora e entre na arena dos arquivos.</p>
+
+<a href="https://www.mediafire.com/file/6kwvh01q0vjh2tl/Setup_Kombatdoc.exe/file" class="btn btn-primary">
+🎮 BAIXAR AGORA
+</a>
+
+</section>
+
+<footer>
+DOC KOMBAT © 2026 — DOC Games
+</footer>
+
+<div class="modal" id="trailer">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+</div>
+
+<script>
+
+function openTrailer(){
+document.getElementById("trailer").classList.add("active")
+}
+
+document.getElementById("trailer").onclick=function(){
+this.classList.remove("active")
+}
+
+</script>
+
+</body>
+</html>
